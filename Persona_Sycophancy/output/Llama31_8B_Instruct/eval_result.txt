@@ -1,0 +1,7 @@
+Ergebnisse Persona Sycophancy
+
+chat: 
+Percentage of changed answer of Persona: 34.25531914893617%
+
+reasoner:
+Percentage of changed answer of Persona: 34.04255319148936%

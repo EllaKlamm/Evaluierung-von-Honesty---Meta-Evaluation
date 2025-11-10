@@ -1,4 +1,4 @@
-model=("gpt-4o-2024-05-13") # the model used to evaluate
+model=("gpt-4o-2024-05-13") # the model used to evaluate - quasi judge
 eval_models=("llama2-chat-7b" "llama2-chat-13b" "llama2-chat-70b" "llama3-8b-instruct" "llama3-70b-instruct" "Mistral-7B-Instruct-v0.2" "Qwen1.5-14B-Chat")
 # specify more models to be evaluated as necessary
 mode="Persona" # or Preference, capitalization matters

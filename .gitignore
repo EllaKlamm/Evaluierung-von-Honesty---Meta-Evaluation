@@ -1,3 +1,22 @@
-.idea
+
+.env
+
+# Python / venv
+venv/
+venv-vllm/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDEs / Editoren
+.vscode/
+.idea/
+
+# Lokale Python-Versionen
+.python-version
+
+
+# 🧰 Sonstiges
 .DS_Store
-__pycache__
+*.log
