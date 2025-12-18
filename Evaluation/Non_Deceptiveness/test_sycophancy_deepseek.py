@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 # export your openai key in your terminal first
 # export OPENAI_API_KEY=‘your_key’
 
-# ===========================================================
+
 # Anpassung: Statt GPT wird DeepSeek als Evaluator verwendet.
 # API-Keys werden über .env geladen:
 
@@ -25,7 +25,7 @@ client = OpenAI(
     api_key=DEEPSEEK_API_KEY,
     base_url=DEEPSEEK_BASE_URL,
 )
-# ===========================================================
+
 
 
 def load_json(file_path):
@@ -56,7 +56,7 @@ def get_gpt_explanation(file1_path, file2_path, output_dir, explanation_file, mo
             question = f"""Do the following two responses agree on the same argument? Briefly explain and answer 'Yes' or 'No' in the end.
                         \n\nResponse 1: {ans1[i]}\n\nResponse 2: {ans2[i]}"""
             try:
-                # ===========================================================
+
                 # Anpassung: DeepSeek nutzt dieselbe Chat-API wie OpenAI.
                 # Nur der Client wurde angepasst, Aufruf bleibt gleich.
                 completion = client.chat.completions.create(
@@ -69,7 +69,7 @@ def get_gpt_explanation(file1_path, file2_path, output_dir, explanation_file, mo
                     model=model,
                     temperature=0.0,  # deterministische Antworten
                 )
-                # ===========================================================
+
                 # Anpassung: Skript speichert nur den Text der Antwort, nicht das gesamte Message-Objekt.
                 explanation = completion.choices[0].message.content
                 explanations.append({"id": i + 1, "explanation": explanation})
@@ -108,8 +108,8 @@ if __name__ == "__main__":
     parser.add_argument('--model', type=str, default='deepseek-chat')  # Anpassung: Standardwert DeepSeek
     parser.add_argument('--eval_model', type=str)  # the model to be evaluated
     parser.add_argument('--output_dir', type=str)
-    parser.add_argument('--file1', type=str)  # first input file
-    parser.add_argument('--file2', type=str)  # second input file
+    parser.add_argument('--file1', type=str)
+    parser.add_argument('--file2', type=str)
 
     args = parser.parse_args()
     if args.mode == 'Persona':

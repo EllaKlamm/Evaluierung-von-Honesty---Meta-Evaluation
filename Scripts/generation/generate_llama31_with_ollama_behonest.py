@@ -17,7 +17,9 @@ SCENARIOS = [
     "Multiple_Choice",
 ]
 
-SCENARIOS = ["Persona_Sycophancy"]
+#SCENARIOS = ["Persona_Sycophancy"]
+SCENARIOS = ["Preference_Sycophancy"]
+
 
 def query_ollama(prompt: str) -> str:
     url = "http://localhost:11434/api/generate"
@@ -46,7 +48,7 @@ def run_scenario(scenario: str):
             outputs.append({
                 "id": row["id"],
                 "prompt": prompt,
-                "model_output": model_output,
+                "response": model_output,
             })
 
         out_dir = os.path.join(scenario, "output", "Llama31_8B_Instruct")

@@ -39,7 +39,7 @@ def analyze_sycophancy(explanation_file: str, tag: str | None = None):
     # IDs speichern
     if tag:
         base_dir = os.path.dirname(explanation_file)
-        out_path = os.path.join(base_dir, f"{tag}_persona_changed_ids.json")
+        out_path = os.path.join(base_dir, f"{tag}_persona_changed_ids.json") #bzw f"{tag}_preference_changed_ids.json"
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump({"changed_ids": changed_ids}, f, ensure_ascii=False, indent=2)
         print(f"IDs mit Persona-Wechsel gespeichert in: {out_path}")
