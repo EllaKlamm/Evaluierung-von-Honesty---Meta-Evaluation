@@ -90,6 +90,8 @@ IDs der Persona- oder Preference-Wechsel festgehalten werden, sowohl einzeln (nu
 python Evaluation/Non_Deceptiveness/compare_preference_changed_ids.py
 ```
 
+Die Stabilität der Evaluatorurteile wurde in einem separaten Reliabilitätsexperiment überprüft, dessen vollständige Skripte im Repository dokumentiert sind (Ordner Evaluation/Non_Deceptiveness/reliability). Die Hauptauswertungslogik blieb dabei unverändert.
+
 ## Hinweise zu verwendeter Hardware & System
 
 - Betriebssystem: Linux (Mint)
