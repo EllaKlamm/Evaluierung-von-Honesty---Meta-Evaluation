@@ -8,6 +8,22 @@ als auch die Grundlage für zukünftige Evaluatoren aus vollständig offenen Ope
 Der Fokus liegt auf den Sycophancy-Szenarien (Persona Sycophancy und
 Preference Sycophancy) aus dem Aspekt *Non-Deceptiveness*.
 
+## Repository-Struktur
+
+- Scripts/generation/  
+  → Generierung der Llama-3.1-Antworten via Ollama
+
+- Evaluation/Non_Deceptiveness/  
+  → Evaluation der Antwortpaare mit DeepSeek (Chat / Reasoner)
+
+- Evaluation/Non_Deceptiveness/reliability/  
+  → Reliabilitätsexperimente (dreifache Evaluation zufällig ausgewählter, identischer (n=50) Prompts)
+
+- Scripts/statistics/  
+  → Statistische Tests (Binomialtest, McNemar-Test)
+- Ordner Persona_Sycophancy bzw. Preference_Sycophancy
+    → Unterordner mit output, Modellantworten von Llama und Reliabilitätsdateien
+
 
 ## Generierung der Modellantworten
 Die Antworten des evaluierten Modells werden mit dem Skript `Scripts/generation/generate_llama31_with_ollama_behonest.py`
@@ -34,7 +50,7 @@ Verwendete Evaluatoren:
 
 Alle Evaluierungen werden, wie bei BeHonest, mit `temperature = 0.0` durchgeführt.
 
-## Auswertung
+## Quantitative Auswertung
 
 Zur quantitativen Analyse (Prozentwerte, betroffene IDs, Überlappungen zwischen
 Evaluatoren) wird das Skript `Evaluation/Non_Deceptiveness/analyze_sycophancy_deepseek.py`
@@ -43,6 +59,18 @@ Dieses Skript extrahiert:
 - die Sycophancy-Rate,
 - die IDs mit festgestelltem Antwortwechsel,
 - Überschneidungen und Abweichungen zwischen Chat- und Reasoner-Evaluator.
+
+## Statistische Auswertung
+
+Zur Absicherung der Ergebnisse werden statistische Tests eingesetzt:
+
+- **Binomialtests** prüfen, ob beobachtete Sycophancy-Raten signifikant von
+  einem theoretischen Nullwert abweichen.
+- **McNemar-Tests** vergleichen die Bewertungen von DeepSeek-Chat und
+  DeepSeek-Reasoner auf Item-Ebene bei gepaarten Entscheidungen.
+
+Die zugehörigen Skripte befinden sich im Ordner `Scripts/statistics/`.
+
 
 ## Reproduzierbarkeit
 
@@ -113,5 +141,5 @@ export DEEPSEEK_BASE_URL=https://api.deepseek.com
 
 - Aktuell werden nur Sycophancy-Szenarien aus BeHonest betrachtet.
 - Die Ergebnisse sind nicht direkt numerisch mit dem Originalpaper vergleichbar,
-  da ein anderes Evaluator-Modell (DeepSeek statt GPT-4) verwendet wird.
+  da ein anderes Evaluator-Modell (DeepSeek statt GPT-4) und eine andere Variante des Targetmodells (Llama 3.1 8b Instruct quantisiert via Ollama statt Llama 3 8b Instruct) verwendet werden.
 - Ziel ist eine qualitative Analyse der Evaluator-Sensitivität, nicht ein exakter Replikationswert.
